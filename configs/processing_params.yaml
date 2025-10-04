@@ -1,0 +1,40 @@
+# --- Curation & Filtering Parameters ---
+curation:
+  # Documents with fewer characters than this will be discarded.
+  min_chars: 50
+  # Documents with more characters than this will be discarded.
+  max_chars: 10000
+  # Whether to perform exact deduplication on the training set.
+  deduplication: true
+
+# --- Tokenizer Training Parameters ---
+tokenizer:
+  # The target vocabulary size for our custom BPE tokenizer.
+  vocab_size: 16384 # Power of 2, good for GPU memory alignment
+  # The amount of data (in bytes) to use for training the tokenizer.
+  # 500MB is plenty for a 1GB dataset.
+  training_sample_size: 500_000_000 # 500 MB
+
+  # Define all special tokens here for a future-proof design.
+  special_tokens:
+    # --- Standard Tokens ---
+    unk_token: "[UNK]"
+    pad_token: "[PAD]"
+    bos_token: "[BOS]"
+    eos_token: "[EOS]"
+
+    # --- Future-Use Tokens for Instruction & Tool Tuning ---
+    # These will be added to the vocabulary now but their embeddings
+    # will be properly learned during the finetuning stage.
+    additional_special_tokens:
+      - "[SYSTEM]"
+      - "[USER]"
+      - "[ASSISTANT]"
+      - "[TOOL_CALL]"
+      - "[TOOL_OUTPUT]"
+
+# --- Data Formatting Parameters ---
+formatting:
+  # The context length (or sequence length) for the model.
+  # This is the fixed size of each sample our model will see during training.
+  context_length: 1024

@@ -1,0 +1,7 @@
+beautifulsoup4==4.13.4
+numpy==2.3.2
+pandas==2.3.2
+tokenizers==0.21.4
+pyyaml==6.0.2
+tqdm==4.67.1
+pyarrow==21.0.0

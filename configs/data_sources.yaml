@@ -1,0 +1,17 @@
+# --- Input Data ---
+# Absolute or relative paths to the directories containing your .parquet files.
+train_dir: "data/raw_source/train"
+validation_dir: "data/raw_source/validation"
+
+# --- Pipeline Output Directories ---
+# Directory to store the standardized raw text in .jsonl format.
+raw_output_dir: "data/pipeline/01_raw"
+
+# Directory to store the cleaned and filtered data.
+curated_output_dir: "data/pipeline/02_curated"
+
+# Directory to save the trained tokenizer model.
+tokenizer_output_dir: "tokenizer"
+
+# Directory for the final, tokenized, and packed dataset ready for training.
+tokenized_output_dir: "data/pipeline/03_tokenized"
