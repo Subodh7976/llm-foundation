@@ -247,7 +247,7 @@ class SinusoidalPositionalEncodingExtended(nn.Module):
             target_len,
             dtype=torch.float32,
             device=self.frequencies.device
-        ).unsqueeze(0)
+        ).unsqueeze(1)
 
         # Apply extension factor for interpolation
         angles = (position * self.extend_factor) * \
@@ -299,7 +299,7 @@ if __name__ == "__main__":
     seq_length = 128
 
     # Example 1: Standard sinusoidal encoding
-    sin_pos = SinusoidalPositionalEncoding(d_model=d_model, max_len=max_len)
+    sin_pos = SinusoidalPositionalEncoding(d_model=d_model, max_len=max_len, dropout=1.0)
 
     # Get encodings for a sequence
     pos_enc = sin_pos(seq_length=seq_length)
